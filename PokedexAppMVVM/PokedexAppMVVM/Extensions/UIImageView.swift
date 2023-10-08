@@ -1,14 +1,12 @@
 //
-//  Extensions.swift
+//  UIImageView.swift
 //  PokedexAppMVVM
 //
-//  Created by Salva Moreno on 5/10/23.
+//  Created by Salva Moreno on 8/10/23.
 //
 
 import Foundation
 import UIKit
-
-// MARK: - UIImageView
 
 extension UIImageView {
     func setImage(for url: URL) {

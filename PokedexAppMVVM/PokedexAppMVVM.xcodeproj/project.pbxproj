@@ -15,6 +15,7 @@
 		B42458462AD054F8003702C9 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42458452AD054F8003702C9 /* DetailModel.swift */; };
 		B42458482AD06640003702C9 /* DataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42458472AD06640003702C9 /* DataPersistence.swift */; };
 		B49E5E412AD2C2FD00FAB4D3 /* SearchPokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49E5E402AD2C2FD00FAB4D3 /* SearchPokemonViewModel.swift */; };
+		B49E5E442AD2FAC400FAB4D3 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49E5E432AD2FAC400FAB4D3 /* UIImageView.swift */; };
 		B4AA6D412ACDC2D1007F941D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA6D402ACDC2D1007F941D /* AppDelegate.swift */; };
 		B4AA6D432ACDC2D1007F941D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA6D422ACDC2D1007F941D /* SceneDelegate.swift */; };
 		B4AA6D4A2ACDC2D2007F941D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4AA6D492ACDC2D2007F941D /* Assets.xcassets */; };
@@ -23,7 +24,6 @@
 		B4AA6D5A2ACDC6EB007F941D /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA6D592ACDC6EB007F941D /* Pokemon.swift */; };
 		B4AA6D5C2ACDCA62007F941D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA6D5B2ACDCA62007F941D /* APIClient.swift */; };
 		B4E6D8F32ACECEF2001D7C04 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6D8F22ACECEF2001D7C04 /* HomeTableViewCell.swift */; };
-		B4E6D8F52ACEDD66001D7C04 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6D8F42ACEDD66001D7C04 /* Extensions.swift */; };
 		B4E6D8F72ACEDE54001D7C04 /* HomeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6D8F62ACEDE54001D7C04 /* HomeCellModel.swift */; };
 		B4E6D8FA2ACEE080001D7C04 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6D8F92ACEE080001D7C04 /* Mapper.swift */; };
 		B4E6D9002ACEF35C001D7C04 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6D8FF2ACEF35C001D7C04 /* SplashViewController.swift */; };
@@ -41,6 +41,7 @@
 		B42458452AD054F8003702C9 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		B42458472AD06640003702C9 /* DataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistence.swift; sourceTree = "<group>"; };
 		B49E5E402AD2C2FD00FAB4D3 /* SearchPokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPokemonViewModel.swift; sourceTree = "<group>"; };
+		B49E5E432AD2FAC400FAB4D3 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		B4AA6D3D2ACDC2D1007F941D /* PokedexAppMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexAppMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AA6D402ACDC2D1007F941D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4AA6D422ACDC2D1007F941D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		B4AA6D592ACDC6EB007F941D /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		B4AA6D5B2ACDCA62007F941D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B4E6D8F22ACECEF2001D7C04 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		B4E6D8F42ACEDD66001D7C04 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B4E6D8F62ACEDE54001D7C04 /* HomeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellModel.swift; sourceTree = "<group>"; };
 		B4E6D8F92ACEE080001D7C04 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		B4E6D8FF2ACEF35C001D7C04 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +114,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B49E5E422AD2FAB300FAB4D3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B49E5E432AD2FAC400FAB4D3 /* UIImageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B4AA6D342ACDC2D1007F941D = {
 			isa = PBXGroup;
 			children = (
@@ -133,13 +141,13 @@
 		B4AA6D3F2ACDC2D1007F941D /* PokedexAppMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				B49E5E422AD2FAB300FAB4D3 /* Extensions */,
 				B4AA6D4E2ACDC2D2007F941D /* Info.plist */,
 				B4E6D8F82ACEE073001D7C04 /* Utils */,
 				B4AA6D542ACDC471007F941D /* App */,
 				B4AA6D582ACDC6C4007F941D /* Domain */,
 				B4E6D8F12ACECEA0001D7C04 /* UI */,
 				B4AA6D552ACDC47D007F941D /* Resources */,
-				B4E6D8F42ACEDD66001D7C04 /* Extensions.swift */,
 			);
 			path = PokedexAppMVVM;
 			sourceTree = "<group>";
@@ -346,6 +354,7 @@
 				B42458482AD06640003702C9 /* DataPersistence.swift in Sources */,
 				B49E5E412AD2C2FD00FAB4D3 /* SearchPokemonViewModel.swift in Sources */,
 				B4E6D9022ACEF87F001D7C04 /* SplashView.swift in Sources */,
+				B49E5E442AD2FAC400FAB4D3 /* UIImageView.swift in Sources */,
 				B4AA6D412ACDC2D1007F941D /* AppDelegate.swift in Sources */,
 				B4E6D9082ACF095F001D7C04 /* SplashViewModel.swift in Sources */,
 				B42458462AD054F8003702C9 /* DetailModel.swift in Sources */,
@@ -359,7 +368,6 @@
 				B42458442AD054EB003702C9 /* DetailViewModel.swift in Sources */,
 				B4AA6D5C2ACDCA62007F941D /* APIClient.swift in Sources */,
 				B4AA6D572ACDC508007F941D /* HomeViewController.swift in Sources */,
-				B4E6D8F52ACEDD66001D7C04 /* Extensions.swift in Sources */,
 				B4E6D9002ACEF35C001D7C04 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
