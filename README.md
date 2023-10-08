@@ -61,24 +61,54 @@
 <a name="descripcion"></a>
 ### Descripción
 
-Como práctica final al módulo de *Fundamentos iOS* del *Bootcamp* en Desarrollo de Apps Móviles, se nos ha propuesto el desarrollo de una **aplicación iOS siguiendo la arquitectura MVC que consuma la *API Rest Dragon Ball* de *KeepCoding*,** con el objetivo de poner a prueba los contenidos impartidos.
+Como práctica final al módulo de *Patrones de diseño* del *Bootcamp* en Desarrollo de Apps Móviles, se nos ha propuesto el desarrollo de una **aplicación iOS**, cuyo principal objetivo es la implementación del **patrón de diseño MVVM**, además de crear una vista *Splash*, un *Home* que liste personajes con imagen y texto, y que al pulsar en ellos se navegue al detalle del mismo.
+
+En mi caso, he decidido realizar una **aplicación que consuma la API Rest de Pokémon** ([PokéApi](https://pokeapi.co)), con un **diseño inspirado en el [concepto creativo](https://dribbble.com/shots/20298235-Pokedex-App)** del usuario llamado [UIuxcreative](https://dribbble.com/rkmhrzn18) de la web [Dribbble](https://dribbble.com).
 
 <a name="caracteristicas"></a>
-### Características adicionales de mejora
+### Características 
 
 <a name="problemas"></a>
 ### Problemas, decisiones y resolución
 
 <a name="problemas1"></a>
-#### Realización del diseño de interfaces de forma programática
+#### Múltiples llamadas a la API en un bucle
 
-Ha sido personal la decisión de realizar la aplicación de forma programática al completo, a pesar de que en este módulo del *Bootcamp* solo se haya impartido el diseño de interfaces a través de *storyboards* o `xibs`. 
+Por necesidades de la Pokémon API, en la que necesitaba recoger los datos específicos de múltiples pokémon para poder reflejarlos en el `UITableView`, me encontré en la tesitura de hacer una llamada en bucle.
 
-Con el objetivo de seguir profundizando en los contenidos, me decidí a investigar sobre el diseño de interfaces con código y sin el uso de una interfaz gráfica, descubriendo que, aunque es un proceso más abstracto y, quizá, más complejo, me sentía más cómodo y, sobre todo, con la confianza de tener el control sobre toda mi aplicación.
+Tras realizar una investigación acerca de los métodos y funciones que podía realizar, me decidí por implementar un `DispatchGroup`, cuya estructura permite controlar un grupo de tareas asincrónicas:
 
-Encuentro ventajas como mayor nivel de personalización y ajuste, comprensión más profunda de lo que hace la interfaz con respecto al uso de *storyboards* y `xibs`, y estructuración del código más flexible y mayor capacidad de acomodación a una determinada arquitectura.
+```swift
+let dispatchGroup = DispatchGroup()
+```
 
-Sin embargo, cabría destacar que la curva de aprendizaje es mayor. Sobre todo, por el nivel de abstracción que se necesita y la necesidad de tener asimilados conceptos como el *Autolayout* y las *constraints*, los cuales puedes ser unos obstáculos difíciles de superar en un inicio.
+A continuación, en un bucle se llama al método `enter()` para indicar que se ha iniciado una nueva tarea. Se realiza la llamada a la API y se emplea `defer` para aseguranos de que siempre se llame al método `leave()` del `DispatchGroup`, independientemente de si la solicitud fue exitosa o no.
+
+```swift
+pokemonList.forEach { pokemon in
+    dispatchGroup.enter()
+    APIClient.shared.getPokemonData(with: pokemon.url) { result in
+        defer {
+            dispatchGroup.leave()
+        }
+        switch result {
+            case .success(let pokemonData):
+                pokemonDataList.append(pokemonData)
+            case .failure(let error):
+                print(error.localizedDescription)
+        }
+    }
+}
+```
+
+Después de que se hayan iniciado todas las tareas (una para cada Pokémon) y se hayan completado, se usa `dispatchGroup.notify()` para especificar un bloque de código que se ejecutará cuando todas las tareas hayan terminado.
+
+```swift
+dispatchGroup.notify(queue: .main) { [weak self] in
+    // ...
+    self?.apiCallFinished()
+}
+```
 
 ---
 
