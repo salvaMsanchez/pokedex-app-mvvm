@@ -7,20 +7,12 @@
 
 import Foundation
 
-//struct PokemonModel {
-//    let index: Int
-//    let name: String
-//    let photo: String
-//    let height: Int
-//    let weight: Int
-//    let type: [String]
-//}
-
 struct PokemonGeneralData: Decodable {
     let name: String
     let url: String
 }
 
+// MARK: - POKEMON GENERAL DATA -
 struct PokemonsGeneralData: Decodable {
     let pokemons: [PokemonGeneralData]
     
@@ -34,6 +26,7 @@ struct PokemonsGeneralData: Decodable {
     }
 }
 
+// MARK: - POKEMON DATA -
 struct PokemonData: Decodable {
     let height: Int
     let forms: [Forms]
@@ -41,6 +34,15 @@ struct PokemonData: Decodable {
     let sprites: Sprites
     let types: [TypeElement]
     let weight: Int
+}
+
+// MARK: - POKEMON DESCRIPTION -
+struct PokemonDescription: Decodable {
+    let flavorTextEntries: [FlavorTextEntry]
+    
+    enum CodingKeys: String, CodingKey {
+        case flavorTextEntries = "flavor_text_entries"
+    }
 }
 
 // MARK: - Stat
@@ -85,17 +87,6 @@ struct Home: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
-    }
-}
-
-
-
-// MARK: - PROVISIONAL - 
-struct PokemonDescription: Decodable {
-    let flavorTextEntries: [FlavorTextEntry]
-    
-    enum CodingKeys: String, CodingKey {
-        case flavorTextEntries = "flavor_text_entries"
     }
 }
 
