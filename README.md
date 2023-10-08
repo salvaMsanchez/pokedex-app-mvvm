@@ -29,10 +29,7 @@
 	* [Descripción](#descripcion) 
 	* [Características](#caracteristicas)
 	* [Problemas, decisiones y resolución](#problemas)
-		* [Realización del diseño de interfaces de forma programática](#problemas1)
-		* [División y estructuración del código](#problemas2) 
-		* [`UIStackView` y *constraints* por código](#problemas3) 
-		* [Actualización del `UITableView` una vez que se llama a la API después de realizar el *login*](#problemas4)
+		* [Múltiples llamadas a la API en un bucle](#problemas1)
 
 <a name="herramientas"></a>
 ## Herramientas
