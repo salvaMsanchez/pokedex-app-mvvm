@@ -23,7 +23,10 @@ final class Mapper {
         return homeCellModelList
     }
     
-    static func toDetailModel(with index: Int, and description: String) -> DetailModel {
+    static func toDetailModel(
+        with index: Int,
+        and description: String
+    ) -> DetailModel {
         let pokemonDataList = DataPersintence.shared.sortedPokemonDataList
         if !pokemonDataList.isEmpty {
             let pokemonData: PokemonData = pokemonDataList[index]

@@ -22,11 +22,11 @@ final class SearchAlgorithm {
     // Función para encontrar todas las coincidencias cercanas en un array de strings usando la similitud de Jaccard
     private static func findNearestMatchesJaccard(input: String, options: [HomeCellModel]) -> [HomeCellModel] {
         var matches: [HomeCellModel] = [HomeCellModel]()
-        let umbralSimilitud: Double = 0.65 
+        let thresholdSimilarity: Double = 0.65 // Aquí podemos ajustar la sensibilidad que tendrá el buscador
         
         for option in options {
             let similarity = jaccardSimilarity(input, option.name)
-            if similarity >= umbralSimilitud {
+            if similarity >= thresholdSimilarity {
                 matches.append(option)
             }
         }
