@@ -16,9 +16,9 @@ protocol DetailViewModelProtocol {
 // MARK: - CLASS -
 final class DetailViewModel {
     
-    private weak var viewDelegate: DetailViewProtocol?
     public var pokemon: DetailModel?
     
+    private weak var viewDelegate: DetailViewProtocol?
     init(viewDelegate: DetailViewProtocol? = nil, pokemon: DetailModel? = nil) {
         self.viewDelegate = viewDelegate
         self.pokemon = pokemon

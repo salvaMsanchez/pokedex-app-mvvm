@@ -10,7 +10,6 @@ import UIKit
 
 final class HomeTableViewCell: UITableViewCell {
     
-    // MARK: - PROPERTIES -
     static let identifier = "HomeTableViewCell"
     
     private let cardView: UIView = {
@@ -132,7 +131,6 @@ final class HomeTableViewCell: UITableViewCell {
         } else {
             indexLabel.text = "#\(model.index)"
         }
-        
     }
     
 }

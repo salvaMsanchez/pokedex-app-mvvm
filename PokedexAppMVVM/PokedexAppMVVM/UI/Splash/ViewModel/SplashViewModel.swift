@@ -17,7 +17,6 @@ protocol SplashViewModelProtocol {
 final class SplashViewModel {
     
     private var pokemonList: [PokemonGeneralData] = [PokemonGeneralData]()
-//    private var pokemonDataList: [PokemonData] = [PokemonData]()
     private var pokemons: [HomeCellModel] = [HomeCellModel]()
     
     private weak var viewDelegate: SplashViewProtocol?
@@ -57,7 +56,6 @@ final class SplashViewModel {
             }
         }
         dispatchGroup.notify(queue: .main) { [weak self] in
-            print("Todas las llamadas a la API han terminado")
             DataPersintence.shared.savePokemonDataList(pokemonDataList: pokemonDataList)
             self?.apiCallFinished()
         }

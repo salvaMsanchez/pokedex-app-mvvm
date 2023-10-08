@@ -18,16 +18,12 @@ final class SearchPokemonViewController: UIViewController {
     
     var viewModel: SearchPokemonViewModelProtocol?
     
-    // MARK: - PROPERTIES -
-//    public var pokemons: [HomeCellModel] = [HomeCellModel]()
-    
     public let searchPokemonTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         return tableView
     }()
     
-    // MARK: - LIFECYCLE -
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +52,6 @@ extension SearchPokemonViewController: UITableViewDataSource, UITableViewDelegat
         if let data = viewModel?.data(at: indexPath.row) {
             cell.configure(with: data)
         }
-//        cell.configure(with: pokemons[indexPath.row])
         return cell
     }
     

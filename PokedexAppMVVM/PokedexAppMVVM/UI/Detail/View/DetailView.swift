@@ -20,7 +20,6 @@ final class DetailView: UIView {
             button.setImage(image, for: .normal)
             button.tintColor = UIColor(named: "pokemonName")
         }
-//        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         button.translatesAutoresizingMaskIntoConstraints = false

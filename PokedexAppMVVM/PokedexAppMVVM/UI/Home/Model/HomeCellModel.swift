@@ -7,8 +7,6 @@
 
 import Foundation
 
-//typealias HomeCellData = (names: [String], photos: [String])
-
 struct HomeCellModel {
     let index: Int
     var name: String

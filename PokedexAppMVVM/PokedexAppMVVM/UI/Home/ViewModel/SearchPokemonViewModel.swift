@@ -10,7 +10,6 @@ import Foundation
 // MARK: - PROTOCOL -
 protocol SearchPokemonViewModelProtocol {
     var dataCount: Int { get }
-//    func onCellSelected(at index: Int)
     func onCellSelected(giving name: String)
     func data(at index: Int) -> HomeCellModel?
     func data(with name: String) -> HomeCellModel?
@@ -21,9 +20,9 @@ protocol SearchPokemonViewModelProtocol {
 // MARK: - CLASS -
 final class SearchPokemonViewModel {
     
-    private weak var viewDelegate: SearchPokemonViewProtocol?
     public var pokemons: [HomeCellModel] = [HomeCellModel]()
     
+    private weak var viewDelegate: SearchPokemonViewProtocol?
     init(viewDelegate: SearchPokemonViewProtocol? = nil, pokemons: [HomeCellModel]) {
         self.viewDelegate = viewDelegate
         self.pokemons = pokemons
@@ -61,7 +60,6 @@ extension SearchPokemonViewModel: SearchPokemonViewModelProtocol {
                     let descriptionCleaned = description.replacingOccurrences(of: "\u{0C}", with: " ")
                     let detailModel = Mapper.toDetailModel(with: data.index - 1,
                                                            and: descriptionCleaned)
-//                    print(detailModel)
                     DispatchQueue.main.async {
                         self?.viewDelegate?.navigateToDetail(with: detailModel)
                     }

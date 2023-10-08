@@ -18,9 +18,6 @@ final class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModelProtocol?
     
-    // MARK: - PROPERTIES -
-//    public var pokemons: [HomeCellModel] = [HomeCellModel]()
-    
     private let pokedexTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor(named: "homeBackground")
@@ -36,7 +33,6 @@ final class HomeViewController: UIViewController {
         return controller
     }()
     
-    // MARK: - LIFECYCLE -
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,7 +61,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.dataCount ?? 0
-//        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,7 +78,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel?.onCellSelected(at: indexPath.row)
+        
         let pokemonName = viewModel?.getPokemonName(at: indexPath.row)
         viewModel?.onCellSelected(giving: pokemonName ?? "")
         
@@ -107,9 +102,7 @@ extension HomeViewController: UISearchResultsUpdating {
         
         resultsController.viewModel = SearchPokemonViewModel(viewDelegate: resultsController, pokemons: pokemonsSearched)
         
-//        resultsController.pokemons = pokemonsSearched
         resultsController.searchPokemonTableView.reloadData()
-
     }
 }
 
@@ -118,7 +111,6 @@ extension HomeViewController: HomeViewProtocol {
     func navigateToDetail(with data: DetailModel?) {
         let nextVC = DetailViewController()
         nextVC.viewModel = DetailViewModel(viewDelegate: nextVC, pokemon: data)
-//        navigationController?.pushViewController(nextVC, animated: true)
         nextVC.modalPresentationStyle = .fullScreen
         nextVC.modalTransitionStyle = .flipHorizontal
         present(nextVC, animated: true)

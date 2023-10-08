@@ -16,10 +16,10 @@ protocol SplashViewProtocol: AnyObject {
 
 // MARK: - CLASS -
 final class SplashViewController: UIViewController {
-    // ViewModel
+    
     var viewModel: SplashViewModelProtocol?
-    // CustomView
-    let splashView = SplashView()
+    
+    private let splashView = SplashView()
     
     override func loadView() {
         super.loadView()
@@ -42,7 +42,6 @@ final class SplashViewController: UIViewController {
 extension SplashViewController: SplashViewProtocol {
     func navigateToHome(pokemons: [HomeCellModel]) {
         let nextVC = HomeViewController()
-//        nextVC.pokemons = pokemons
         nextVC.viewModel = HomeViewModel(viewDelegate: nextVC, pokemons: pokemons)
         
         navigationController?.setViewControllers([nextVC], animated: true)

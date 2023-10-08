@@ -18,7 +18,7 @@ final class DetailViewController: UIViewController {
     
     var viewModel: DetailViewModelProtocol?
     
-    let detailView = DetailView()
+    private let detailView = DetailView()
     
     override func loadView() {
         super.loadView()
