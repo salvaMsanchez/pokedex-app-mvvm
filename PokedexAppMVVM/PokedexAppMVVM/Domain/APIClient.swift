@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Constants {
+    static let baseURL = "https://pokeapi.co/api/v2/"
+}
+
 enum APIError: Error {
     case urlError
     case decodingFailed
@@ -21,11 +25,10 @@ final class APIClient {
     // MARK: - SINGLETON -
     static let shared = APIClient()
     
-    // https://pokeapi.co/api/v2/pokemon/1/
-    
+    // MARK: - GET POKEMONS -
     func getPokemons(completion: @escaping (Result<[PokemonGeneralData], APIError>) -> Void) {
 
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151") else {
+        guard let url = URL(string: "\(Constants.baseURL)pokemon/?offset=0&limit=151") else {
             completion(.failure(.urlError))
             return
         }
@@ -60,6 +63,7 @@ final class APIClient {
 
     }
     
+    // MARK: - GET POKEMON DATA -
     func getPokemonData(
         with pokemonURLData: String,
         completion: @escaping (Result<PokemonData, APIError>) -> Void
@@ -95,11 +99,12 @@ final class APIClient {
         task.resume()
     }
     
+    // MARK: - GET POKEMON DESCRIPTION -
     func getPokemonDescription(
         with pokemonDataName: String,
         completion: @escaping (Result<PokemonDescription, APIError>) -> Void
     ) {
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon-species/\(pokemonDataName)/") else {
+        guard let url = URL(string: "\(Constants.baseURL)pokemon-species/\(pokemonDataName)/") else {
             completion(.failure(.urlError))
             return
         }
@@ -129,62 +134,5 @@ final class APIClient {
 
         task.resume()
     }
-    
-//    func getPokemonDescription(
-//        with pokemonDataIndex: Int,
-//        completion: @escaping (Result<PokemonDescription, APIError>) -> Void
-//    ) {
-//        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon-species/\(pokemonDataIndex)/") else {
-//            completion(.failure(.urlError))
-//            return
-//        }
-//
-//        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-//            guard error == nil else {
-//                completion(.failure(.errorNil))
-//                return
-//            }
-//            guard let data else {
-//                completion(.failure(.noData))
-//                return
-//            }
-//            let httpResponse = response as? HTTPURLResponse
-//            let statusCode = httpResponse?.statusCode
-//            guard statusCode == 200 else {
-//                completion(.failure(.statusCode(code: statusCode)))
-//                return
-//            }
-//            do {
-//                let results = try JSONDecoder().decode(PokemonDescription.self, from: data)
-//                completion(.success(results))
-//            } catch {
-//                completion(.failure(.decodingFailed))
-//            }
-//        }
-//
-//        task.resume()
-//    }
-    
-//    func search(with query: String, completion: @escaping (Result<[PokemonData], Error>) -> Void) {
-//        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return
-//        }
-//        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(query)") else {
-//            return
-//        }
-//        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
-//            guard let data = data, error == nil else {
-//                return
-//            }
-//            
-//            do {
-//                let results = try JSONDecoder().decode([PokemonData].self, from: data)
-//                completion(.success(results))
-//            } catch {
-//                completion(.failure(APIError.decodingFailed))
-//            }
-//        }
-//        
-//        task.resume()
-//    }
     
 }
